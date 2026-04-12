@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albert Pittman — Independent Technical Consultant</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --accent: #c8a84b;
+    --accent-dim: #7a6228;
+    --text: #d4d4d4;
+    --text-dim: #666666;
+    --text-bright: #f0f0f0;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  html { background: var(--bg); color: var(--text); font-family: var(--sans); }
+
+  body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-left: 3px solid var(--accent);
+    padding-left: 24px;
+    margin-bottom: 64px;
+    animation: fadein 0.6s ease both;
+  }
+
+  .header-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .header-sub {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent-dim);
+    margin-bottom: 20px;
+  }
+
+  .contact-line {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .contact-line span { color: var(--text); }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 48px;
+    animation: fadein 0.6s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-bright);
+    font-weight: 500;
+  }
+
+  /* ── STATEMENT ── */
+  .statement {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text-bright);
+    line-height: 1.75;
+    border-left: 1px solid var(--accent-dim);
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  .statement strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── CAPABILITY GRID ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  .cap-cell {
+    background: var(--surface);
+    padding: 16px 20px;
+  }
+
+  .cap-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .cap-body {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── TRUTH ITEMS ── */
+  .truth-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .truth-list li {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 12px;
+    line-height: 1.5;
+  }
+
+  .truth-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  /* ── CLIENT FIT ── */
+  .fit-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 10px;
+  }
+
+  .fit-who {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .fit-what {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .fit-what strong { color: var(--text-bright); }
+
+  /* ── METHOD ── */
+  .method-rule {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+  }
+
+  .method-rule:last-child { border-bottom: none; }
+
+  .method-key { color: var(--accent); }
+
+  /* ── FOOTER GATE ── */
+  .gate {
+    margin-top: 64px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 2;
+  }
+
+  .gate-line { color: var(--accent); font-size: 11px; }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 32px 20px 60px; }
+    .cap-grid { grid-template-columns: 1fr; }
+    .method-rule { grid-template-columns: 1fr; gap: 4px; }
+    .header h1 { font-size: 22px; }
+    .contact-line { flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body contenteditable="true" spellcheck="false">
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-label">Independent Technical Consultant</div>
+  <h1>Albert Pittman</h1>
+  <div class="header-sub">Embedded Android · Forensic Binary Analysis · AOSP Platform Engineering</div>
+  <div class="contact-line">
+    <span>&#98;&#101;&#46;&#114;&#116;&#46;&#112;&#105;&#116;&#116;&#109;&#97;&#110;&#55;&#54;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span>
+    <span>(730) 233-9281</span>
+    <span>Remote · Contract · Project-based</span>
+  </div>
+</div>
+
+<!-- ── SECTION 1: WHO ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">What I Do</span>
+  </div>
+  <p class="statement">
+    I solve the problems your team has already <strong>decided are unsolvable.</strong>
+    I work from raw binary outward — no assumptions, no borrowed values, no guessing.
+    If the hardware did not say it, it does not exist in my work.
+    Every value I produce is traceable to a physical hardware source.
+  </p>
+  <p class="statement">
+    I have been building things since 1982 — skilled trades, computing, embedded systems.
+    <strong>If it can be built, I can build it.</strong> I do not stop until I know I am right.
+    Pressure is not a problem. It is motivation.
+  </p>
+</div>
+
+<!-- ── SECTION 2: CAPABILITIES ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Core Capabilities</span>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-cell">
+      <div class="cap-label">Forensic Binary Analysis</div>
+      <div class="cap-body">Boot image internals, partition archaeology, hardware identity recovered from raw hex. No tool output trusted until cross-verified against binary.</div>
+    </div>
+    <div class="cap-cell">
+      <div class="cap-label">AOSP Platform Engineering</div>
+      <div class="cap-body">Full AOSP build system from Makefile and BoardConfig level. Device tree construction with zero borrowed values. Documented, reproducible builds.</div>
+    </div>
+    <div class="cap-cell">
+      <div class="cap-label">MediaTek Platform Depth</div>
+      <div class="cap-body">BROM, LK bootloader, TEE, PMIC, ATF, SCP — full stack hardware bring-up. Proven on production MTK silicon including undocumented Franken-SoC configurations.</div>
+    </div>
+    <div class="cap-cell">
+      <div class="cap-label">Embedded Android Recovery</div>
+      <div class="cap-body">TWRP build and validation, FBE crypto chain verification, fstab forensics, blob dependency audits, init hook parity — from scratch, device-agnostic.</div>
+    </div>
+    <div class="cap-cell">
+      <div class="cap-label">Hardware Interrogation</div>
+      <div class="cap-body">Live device analysis via ADB, MTK Client BROM-level backup, NVRAM archaeology, DTB/DTBO decode, GPIO mapping, coprocessor identification.</div>
+    </div>
+    <div class="cap-cell">
+      <div class="cap-label">Methodology &amp; Documentation</div>
+      <div class="cap-body">Forensic investigation schemas, build control documents, pre-build validation rule sets — every value source-coded to a hardware evidence section. No assumption goes undocumented.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: TRUTH ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">How I Work</span>
+  </div>
+  <ul class="truth-list">
+    <li>Raw binary is the final authority. Tool output is a starting point, not a conclusion.</li>
+    <li>Every value is verified against its hardware source before it enters any document or build file.</li>
+    <li>I do not borrow values from other device trees. I do not guess. I do not approximate.</li>
+    <li>I document methodology, not just results — every finding is reproducible and traceable.</li>
+    <li>I work better under pressure. A hard deadline and a device that will not boot is not a problem. It is the problem I am built for.</li>
+    <li>I do not stop at "it works." I stop when I can prove why it works and rule out every reason it should not.</li>
+    <li>I disengage when the problem is solved. No padding, no scope creep, no dependency engineering.</li>
+  </ul>
+</div>
+
+<!-- ── SECTION 4: CLIENT FIT ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Who I Work With</span>
+  </div>
+
+  <div class="fit-block">
+    <div class="fit-who">OEMs &amp; ODMs</div>
+    <div class="fit-what">Hardware companies bringing up Android on new silicon. <strong>Industrial tablets, rugged devices, wearables, kiosks, medical hardware.</strong> I build the platform layer your application team needs to stand on — correctly, the first time.</div>
+  </div>
+
+  <div class="fit-block">
+    <div class="fit-who">Mobile Security Firms</div>
+    <div class="fit-what">Companies that need someone who thinks forensically about Android hardware — not just the OS layer. <strong>Boot chain analysis, partition-level investigation, TEE and crypto chain verification.</strong> I work the same way your analysts do: from evidence, not assumption.</div>
+  </div>
+
+  <div class="fit-block">
+    <div class="fit-who">MDM / EMM Vendors &amp; Device Fleet Operators</div>
+    <div class="fit-what">Companies managing large fleets of Android hardware who hit platform-level problems their application team cannot reach. <strong>Recovery engineering, partition integrity, bring-up failures.</strong> I go to the level the problem actually lives at.</div>
+  </div>
+
+  <div class="fit-block">
+    <div class="fit-who">Engagements I Do Not Take</div>
+    <div class="fit-what">Clients who want shortcuts. Clients who want a deliverable they can show management instead of an answer. Clients who will push back on methodology to save time. <strong>If you need it done right, I am the right call. If you need it done fast and approximate, I am not.</strong></div>
+  </div>
+</div>
+
+<!-- ── SECTION 5: ENGAGEMENT ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">Engagement Model</span>
+  </div>
+  <div class="method-rule">
+    <span class="method-key">FORMAT</span>
+    <span>Remote contract. Project-based or retainer. No relocation.</span>
+  </div>
+  <div class="method-rule">
+    <span class="method-key">SCOPE</span>
+    <span>Forensic audits, platform bring-up, build system engineering, recovery development, binary analysis — define the problem, I scope the work.</span>
+  </div>
+  <div class="method-rule">
+    <span class="method-key">DELIVERABLES</span>
+    <span>Documented findings, verified build artifacts, reproducible methodology. You own the work product completely.</span>
+  </div>
+  <div class="method-rule">
+    <span class="method-key">TIMELINE</span>
+    <span>Available now. Pressure-tolerant. Hard deadlines are fine.</span>
+  </div>
+  <div class="method-rule">
+    <span class="method-key">CONTACT</span>
+    <span>&#98;&#101;&#46;&#114;&#116;&#46;&#112;&#105;&#116;&#116;&#109;&#97;&#110;&#55;&#54;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109; &nbsp;·&nbsp; (730) 233-9281</span>
+  </div>
+</div>
+
+<!-- ── GATE ── -->
+<div class="gate">
+  <div class="gate-line">EVERY VALUE TRACEABLE TO HARDWARE EVIDENCE</div>
+  <div cl
