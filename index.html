@@ -31,11 +31,14 @@
     line-height: 1.7;
   }
 
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); }
+  a:hover { border-bottom-color: var(--accent); }
+
   /* ── HEADER ── */
   .header {
     border-left: 3px solid var(--accent);
     padding-left: 24px;
-    margin-bottom: 64px;
+    margin-bottom: 56px;
     animation: fadein 0.6s ease both;
   }
 
@@ -123,6 +126,36 @@
   .statement strong {
     color: var(--accent);
     font-weight: 600;
+  }
+
+  /* ── WORK LIST ── */
+  .work-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    margin-bottom: 10px;
+  }
+
+  .work-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-bright);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .work-body {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .work-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
   }
 
   /* ── CAPABILITY GRID ── */
@@ -250,15 +283,15 @@
   }
 </style>
 </head>
-<body contenteditable="true" spellcheck="false">
+<body>
 
 <!-- ── HEADER ── -->
 <div class="header">
   <div class="header-label">Independent Technical Consultant</div>
   <h1>Albert Pittman</h1>
-  <div class="header-sub">Embedded Android · Forensic Binary Analysis · AOSP Platform Engineering</div>
+  <div class="header-sub">Embedded Android · MediaTek Platform RE · Forensic Binary Analysis</div>
   <div class="contact-line">
-    <span>&#98;&#101;&#46;&#114;&#116;&#46;&#112;&#105;&#116;&#116;&#109;&#97;&#110;&#55;&#54;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span>
+    <span>be.rt.pittman76@gmail.com</span>
     <span>(730) 233-9281</span>
     <span>Remote · Contract · Project-based</span>
   </div>
@@ -271,28 +304,76 @@
     <span class="section-title">What I Do</span>
   </div>
   <p class="statement">
-    I solve the problems your team has already <strong>decided are unsolvable.</strong>
-    I work from raw binary outward — no assumptions, no borrowed values, no guessing.
-    If the hardware did not say it, it does not exist in my work.
-    Every value I produce is traceable to a physical hardware source.
+    I work on the problems your team has already <strong>decided are unsolvable.</strong>
+    Embedded Android platform bring-up, MediaTek boot chain analysis, forensic binary
+    reverse engineering, and AOSP build system construction.
   </p>
   <p class="statement">
-    I have been building things since 1982 — skilled trades, computing, embedded systems.
-    <strong>If it can be built, I can build it.</strong> I do not stop until I know I am right.
-    Pressure is not a problem. It is motivation.
+    I work from raw binary outward. <strong>Every value I produce is traceable to a
+    hardware source.</strong> No borrowed values. No guesses. No assumptions promoted
+    to fact. If the hardware did not say it, it does not exist in my work.
   </p>
 </div>
 
-<!-- ── SECTION 2: CAPABILITIES ── -->
+<!-- ── SECTION 2: PUBLISHED WORK ── -->
 <div class="section">
   <div class="section-header">
     <span class="section-num">02</span>
+    <span class="section-title">Published Work</span>
+  </div>
+
+  <div class="work-item">
+    <div class="work-title">C17S / LOKMAT APPLLP 5 MAX — Hardware Digital Twin</div>
+    <div class="work-body">
+      Twelve-section forensically verified hardware database covering BROM identity, eMMC
+      topology, boot chain execution domains, bus fabric, clock/reset/IRQ topology, power
+      management, coprocessor plane, radio stack, security substrate, and negative hardware
+      ledger. Every value evidence-class tagged.
+    </div>
+    <a class="work-link" href="https://github.com/Beright1976/mt6762-mt6765_C17S_platform_resources">github.com/Beright1976/mt6762-mt6765_C17S_platform_resources</a>
+  </div>
+
+  <div class="work-item">
+    <div class="work-title">MT6762 / MT6765 Platform Research — XDA Thread</div>
+    <div class="work-body">
+      Public reverse engineering and security analysis thread. Full platform documentation,
+      BROM-level findings, factory-state analysis, and reproducible methodology.
+    </div>
+    <a class="work-link" href="https://xdaforums.com/t/r-d-mt6762-mt6765-lokmat-appllp-5-max-c17s-reverse-engineering-security-analysis-and-platform-remediation.4803106/">xdaforums.com — MT6762/MT6765 C17S RE & Security Analysis</a>
+  </div>
+
+  <div class="work-item">
+    <div class="work-title">TWRP 11 with Full FBE Decryption — C17S</div>
+    <div class="work-body">
+      Working TWRP 11 build on a heavily ODM-modified MediaTek device. Seven distinct
+      crypto stack problems diagnosed and solved at the binary and kernel level, including
+      ODM-modified library collision isolation, ghost partition identification, and legacy
+      fscrypt API bridging. Zero hardware TEE reliance.
+    </div>
+    <a class="work-link" href="https://github.com/Beright1976/Lokmat5MAX_wiite-c17s_mt6765">github.com/Beright1976/Lokmat5MAX_wiite-c17s_mt6765</a>
+  </div>
+
+  <div class="work-item">
+    <div class="work-title">ODM Backdoor Research</div>
+    <div class="work-body">
+      Analysis of vendor control-plane exposure in production consumer firmware. Documented
+      UID 1000 privileged package surfaces, hidden secret-code receivers, exposed firmware
+      update hooks, and factory engineering tooling shipped in consumer builds.
+    </div>
+    <a class="work-link" href="https://github.com/Beright1976/wiite-odm-backdoor-research">github.com/Beright1976/wiite-odm-backdoor-research</a>
+  </div>
+</div>
+
+<!-- ── SECTION 3: CAPABILITIES ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
     <span class="section-title">Core Capabilities</span>
   </div>
   <div class="cap-grid">
     <div class="cap-cell">
       <div class="cap-label">Forensic Binary Analysis</div>
-      <div class="cap-body">Boot image internals, partition archaeology, hardware identity recovered from raw hex. No tool output trusted until cross-verified against binary.</div>
+      <div class="cap-body">Boot image internals, partition archaeology, hardware identity recovered from raw hex. Tool output is a starting point, never a conclusion.</div>
     </div>
     <div class="cap-cell">
       <div class="cap-label">AOSP Platform Engineering</div>
@@ -300,27 +381,27 @@
     </div>
     <div class="cap-cell">
       <div class="cap-label">MediaTek Platform Depth</div>
-      <div class="cap-body">BROM, LK bootloader, TEE, PMIC, ATF, SCP — full stack hardware bring-up. Proven on production MTK silicon including undocumented Franken-SoC configurations.</div>
+      <div class="cap-body">BROM, preloader, LK bootloader, TEE, ATF, SCP, SSPM, PMIC — full stack hardware bring-up. Proven on production MTK silicon including undocumented Franken-SoC configurations.</div>
     </div>
     <div class="cap-cell">
       <div class="cap-label">Embedded Android Recovery</div>
-      <div class="cap-body">TWRP build and validation, FBE crypto chain verification, fstab forensics, blob dependency audits, init hook parity — from scratch, device-agnostic.</div>
+      <div class="cap-body">TWRP build and validation, FBE crypto chain verification, fstab forensics, ODM blob dependency audits, init hook parity — from scratch, device-agnostic.</div>
     </div>
     <div class="cap-cell">
       <div class="cap-label">Hardware Interrogation</div>
-      <div class="cap-body">Live device analysis via ADB, MTK Client BROM-level backup, NVRAM archaeology, DTB/DTBO decode, GPIO mapping, coprocessor identification.</div>
+      <div class="cap-body">Live device analysis via ADB, MTK Client BROM-level acquisition, NVRAM archaeology, DTB/DTBO decode, GPIO mapping, coprocessor identification.</div>
     </div>
     <div class="cap-cell">
       <div class="cap-label">Methodology &amp; Documentation</div>
-      <div class="cap-body">Forensic investigation schemas, build control documents, pre-build validation rule sets — every value source-coded to a hardware evidence section. No assumption goes undocumented.</div>
+      <div class="cap-body">Forensic investigation schemas, build control documents, pre-build validation rule sets — every value source-coded to a hardware evidence section.</div>
     </div>
   </div>
 </div>
 
-<!-- ── SECTION 3: TRUTH ── -->
+<!-- ── SECTION 4: HOW I WORK ── -->
 <div class="section">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <span class="section-title">How I Work</span>
   </div>
   <ul class="truth-list">
@@ -328,45 +409,45 @@
     <li>Every value is verified against its hardware source before it enters any document or build file.</li>
     <li>I do not borrow values from other device trees. I do not guess. I do not approximate.</li>
     <li>I document methodology, not just results — every finding is reproducible and traceable.</li>
-    <li>I work better under pressure. A hard deadline and a device that will not boot is not a problem. It is the problem I am built for.</li>
+    <li>I work well under pressure. Hard deadlines are fine. Complicated hardware is fine.</li>
     <li>I do not stop at "it works." I stop when I can prove why it works and rule out every reason it should not.</li>
     <li>I disengage when the problem is solved. No padding, no scope creep, no dependency engineering.</li>
   </ul>
 </div>
 
-<!-- ── SECTION 4: CLIENT FIT ── -->
+<!-- ── SECTION 5: WHO I WORK WITH ── -->
 <div class="section">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <span class="section-title">Who I Work With</span>
   </div>
 
   <div class="fit-block">
     <div class="fit-who">OEMs &amp; ODMs</div>
-    <div class="fit-what">Hardware companies bringing up Android on new silicon. <strong>Industrial tablets, rugged devices, wearables, kiosks, medical hardware.</strong> I build the platform layer your application team needs to stand on — correctly, the first time.</div>
+    <div class="fit-what">Hardware companies bringing up Android on new silicon. <strong>Industrial tablets, rugged devices, wearables, kiosks, medical hardware.</strong> I build the platform layer your application team stands on — correctly, the first time.</div>
   </div>
 
   <div class="fit-block">
     <div class="fit-who">Mobile Security Firms</div>
-    <div class="fit-what">Companies that need someone who thinks forensically about Android hardware — not just the OS layer. <strong>Boot chain analysis, partition-level investigation, TEE and crypto chain verification.</strong> I work the same way your analysts do: from evidence, not assumption.</div>
+    <div class="fit-what">Firms that need someone who thinks forensically about Android hardware, not just the OS layer. <strong>Boot chain analysis, partition-level investigation, TEE and crypto chain verification.</strong></div>
   </div>
 
   <div class="fit-block">
-    <div class="fit-who">MDM / EMM Vendors &amp; Device Fleet Operators</div>
-    <div class="fit-what">Companies managing large fleets of Android hardware who hit platform-level problems their application team cannot reach. <strong>Recovery engineering, partition integrity, bring-up failures.</strong> I go to the level the problem actually lives at.</div>
+    <div class="fit-who">MDM / EMM Vendors &amp; Fleet Operators</div>
+    <div class="fit-what">Companies managing large fleets of Android hardware who hit platform-level problems their application team cannot reach. <strong>Recovery engineering, partition integrity, bring-up failures.</strong></div>
   </div>
 
   <div class="fit-block">
-    <div class="fit-who">Engagements I Do Not Take</div>
-    <div class="fit-what">Clients who want shortcuts. Clients who want a deliverable they can show management instead of an answer. Clients who will push back on methodology to save time. <strong>If you need it done right, I am the right call. If you need it done fast and approximate, I am not.</strong></div>
+    <div class="fit-who">Engagement Standards</div>
+    <div class="fit-what">I take work where methodology matters more than speed. I do not take work where the deliverable is a slide deck instead of an answer, or where scope will be compressed at the cost of correctness. <strong>If it needs to be done right, I am the right call.</strong></div>
   </div>
 </div>
 
-<!-- ── SECTION 5: ENGAGEMENT ── -->
+<!-- ── SECTION 6: ENGAGEMENT ── -->
 <div class="section">
   <div class="section-header">
-    <span class="section-num">05</span>
-    <span class="section-title">Engagement Model</span>
+    <span class="section-num">06</span>
+    <span class="section-title">Engagement</span>
   </div>
   <div class="method-rule">
     <span class="method-key">FORMAT</span>
@@ -374,23 +455,25 @@
   </div>
   <div class="method-rule">
     <span class="method-key">SCOPE</span>
-    <span>Forensic audits, platform bring-up, build system engineering, recovery development, binary analysis — define the problem, I scope the work.</span>
+    <span>Forensic audits, platform bring-up, build system engineering, recovery development, binary analysis. Define the problem, I scope the work.</span>
   </div>
   <div class="method-rule">
     <span class="method-key">DELIVERABLES</span>
     <span>Documented findings, verified build artifacts, reproducible methodology. You own the work product completely.</span>
   </div>
   <div class="method-rule">
-    <span class="method-key">TIMELINE</span>
-    <span>Available now. Pressure-tolerant. Hard deadlines are fine.</span>
+    <span class="method-key">AVAILABILITY</span>
+    <span>Taking new engagements now. Remote only.</span>
   </div>
   <div class="method-rule">
     <span class="method-key">CONTACT</span>
-    <span>&#98;&#101;&#46;&#114;&#116;&#46;&#112;&#105;&#116;&#116;&#109;&#97;&#110;&#55;&#54;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109; &nbsp;·&nbsp; (730) 233-9281</span>
+    <span>be.rt.pittman76@gmail.com &nbsp;·&nbsp; (730) 233-9281</span>
   </div>
 </div>
 
 <!-- ── GATE ── -->
 <div class="gate">
   <div class="gate-line">EVERY VALUE TRACEABLE TO HARDWARE EVIDENCE</div>
-  <div cl
+</div>
+</body>
+</html>
